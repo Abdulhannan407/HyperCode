@@ -1,3 +1,4 @@
+<img width="1383" height="293" alt="image" src="https://github.com/user-attachments/assets/f4eceee1-de9d-44f9-9256-6c047e870222" />
 # ⚡ Hyper Code (Vibe Workspace Assistant v13.0)
 
 Hyper Code is an open-source, autonomous AI coding agent that lives directly in your terminal[cite: 5]. It features autonomous workspace exploration, diff-reviewed file edits, test-driven self-healing, and a unique "Racing Mode" to run multiple LLMs in parallel[cite: 5].
