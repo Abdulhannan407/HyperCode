@@ -1,0 +1,6 @@
+litellm
+questionary
+pyaudio
+google-genai
+rich
+playwright

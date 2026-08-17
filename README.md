@@ -1,24 +1,72 @@
-# Hyper Code 🚀
+# ⚡ Hyper Code (Vibe Workspace Assistant v13.0)
 
-Hyper Code is an autonomous, open-source AI coding agent that runs directly in your terminal. It acts as a highly capable pair programmer that can explore your workspace, write code, run tests, debug failures, and deploy files—all automatically!
+Hyper Code is an open-source, autonomous AI coding agent that lives directly in your terminal[cite: 5]. It features autonomous workspace exploration, diff-reviewed file edits, test-driven self-healing, and a unique "Racing Mode" to run multiple LLMs in parallel[cite: 5].
 
-## Features
+## ✨ Key Features
 
-- **Solo Agent Mode:** Explore the codebase, generate execution plans, write code, run self-healing test loops, and perform visual QA audits.
-- **Racing Mode:** Connect multiple language models (like Claude, Gemini, and OpenAI) and have them compete simultaneously to solve your task the fastest.
-- **Zero-Dependency MCP Client:** Natively connects to Model Context Protocol (MCP) servers over `stdio` to integrate local tools seamlessly.
-- **Hardware-Aware Local Models:** Automatically scans your system RAM to recommend the absolute best local Ollama model (e.g., Llama 3.2, Qwen, Mistral Nemo) to run fully offline without lagging your machine.
-- **Undo System:** Built-in `/undo` command that leverages `git stash` or a localized `.hypercode` snapshot system to instantly revert any unwanted AI edits.
-- **Symbol-Aware Workspace Indexing:** The `/ls` command dynamically extracts and lists classes, functions, and symbols out of Python, Go, JS, TS, and Rust files so the AI understands your project structure natively.
-- **Live Preview:** Type `/preview` inside the terminal to automatically spawn a background server (Node/Vite or Python HTTP) and open a browser window right next to your terminal!
-- **3 Approval Modes:** Configurable safety parameters (`suggest`, `auto`, `full-auto`) to let the AI write freely or ask for permission before modifying critical files or running shell commands.
+*   **Dual Operating Modes:**
+    *   **🏎️ Racing Mode (2+ models):** Runs multiple models in parallel inside ephemeral Git sandboxes. The fastest model to pass the Playwright Visual QA audit wins and merges its code[cite: 5].
+    *   **🤖 Solo Agent Mode (1 model):** Engages a full agentic loop. The model autonomously explores the workspace using `search_directory` and `read_file` tools, creates a visible task checklist, edits files in place, and reviews diffs before applying[cite: 5].
+*   **Test-Driven Self-Heal Loop:** Automatically detects test suites (`pytest`, `npm test`, `go test`) and iterates on failures automatically[cite: 5].
+*   **Diff-Reviewed File Edits:** Existing files are shown as a unified diff for review, not silently overwritten[cite: 5].
+*   **Approval Modes:** Control agent autonomy with `/mode <suggest|auto|full-auto>`[cite: 5].
+*   **Undo & Session Persistence:** Remembers chat history across restarts and allows you to revert changes using Git stashes and file snapshots (`/undo`)[cite: 5].
+*   **Phantom Sandboxes:** Executes AI code in temporary Git worktrees to protect your local files[cite: 5].
+*   **Voice Engineering:** Record audio via your microphone and have the AI compile it into a senior engineering spec[cite: 5].
 
-## Getting Started
+## 🛠️ Installation
 
-1. Download or clone this repository.
-2. Run the executable from your terminal:
+We have provided a unified install script that handles system dependencies (like PortAudio for voice features) and Python requirements automatically.
+
+1. **Clone the repository:**
    ```bash
-   python3 crack.py
+   git clone https://github.com/Abdulhannan407/HyperCode.git
+   cd HyperCode
    ```
-3. A guided setup wizard will prompt you to configure your API keys and select your preferred models.
-4. Type `/help` or `/features` in the terminal to see all available commands!
+
+2. **Make the installer executable and run it:**
+   ```bash
+   chmod +x install.sh
+   ./install.sh
+   ```
+
+## 🚀 Quick Start
+
+Run the assistant by executing the main script:
+
+```bash
+python3 crack.py
+```
+
+On the first run, the interactive setup will ask you to:
+
+1. Select the models you want to use (e.g., Gemini 2.5 Flash, Claude 3.7 Sonnet, GPT-4o, or Local offline Ollama models).
+2. Provide the necessary API keys. These are securely saved to `~/.vibe_apex_config.json`.
+
+## 💻 Commands Cheat Sheet
+
+Inside the interactive Hyper Code REPL, you can use the following commands:
+
+| Command | Description |
+| --- | --- |
+| `/ls` | Scans and lists all valid project files locally with symbol-aware indexing. |
+| `/add <file>` | Manually injects a specific file into the AI's precision context. |
+| `voice` | Records audio via mic & compiles it into a senior engineering spec. |
+| `/mode <mode>` | Set autonomy level to `suggest`, `auto`, or `full-auto`. |
+| `/model set <model>` | Pins a specific model (e.g., `ollama/llama3.2`) to THIS project only. |
+| `/deps` | Scans the project for dependencies and suggests installation commands. |
+| `/preview` | Starts a local dev server (npm or Python HTTP) and opens your browser. |
+| `/undo` | Restores the workspace from the last file snapshot or Git stash. |
+| `/clear` | Clears conversation memory for the current folder. |
+| `/sessions` | Shows every Hyper Code terminal running on your machine. |
+| `/features` | Shows the full feature dashboard. |
+
+## 🚨 Crash Auto-Patching
+
+If you have a broken Python script, you can use Hyper Code as an auto-debugger. Instead of entering the interactive loop, run your broken script through Hyper Code:
+
+```bash
+python3 crack.py my_broken_script.py
+```
+
+It will catch `stderr` tracebacks, run AI diagnostics, and offer an interactive diff patch to fix the crash.
